@@ -618,6 +618,7 @@ typedef enum {
     rv_op_cram,
     rv_op_cmove,
     rv_op_ccleartag,
+    rv_op_csetnotrap,
     rv_op_cjalr,
     rv_op_cgethigh,
     rv_op_cgetaddr,
@@ -1502,6 +1503,7 @@ const rv_opcode_data opcode_data[] = {
     [rv_op_cram] = { "cram", rv_codec_r, rv_fmt_rd_rs1, NULL, 0, 0, 0 },
     [rv_op_cmove] = { "cmove", rv_codec_r, rv_fmt_cd_cs1, NULL, 0, 0, 0 },
     [rv_op_ccleartag] = { "ccleartag", rv_codec_r, rv_fmt_cd_cs1, NULL, 0, 0, 0 },
+    [rv_op_csetnotrap] = { "csetnotrap", rv_codec_r, rv_fmt_cd_cs1, NULL, 0, 0, 0 },
     [rv_op_cjalr] = { "cjalr", rv_codec_r, rv_fmt_cd_cs1, NULL, 0, 0, 0 },
     [rv_op_cgetaddr] = { "cgetaddr", rv_codec_r, rv_fmt_rd_cs1, NULL, 0, 0, 0 },
     [rv_op_cgethigh] = { "cgetaddr", rv_codec_r, rv_fmt_rd_cs1, NULL, 0, 0, 0 },
@@ -1855,6 +1857,7 @@ static rv_opcode decode_cheri_two_op(unsigned func) {
     case 0b10001: return rv_op_csealentry;
     case 0b10010: return rv_op_cloadtags;
     case 0b10111: return rv_op_cgethigh;
+    case 0b11000: return rv_op_csetnotrap;
     default: return rv_op_illegal;
     }
 }

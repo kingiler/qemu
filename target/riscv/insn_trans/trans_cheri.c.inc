@@ -227,6 +227,7 @@ static inline bool trans_crrl(DisasContext *ctx, arg_crrl *a)
 
 // Two operand (cap cap)
 TRANSLATE_CAP_CAP(ccleartag)
+TRANSLATE_CAP_CAP(csetnotrap)
 TRANSLATE_CAP_CAP(csealentry)
 
 // Three operand (cap cap cap)
