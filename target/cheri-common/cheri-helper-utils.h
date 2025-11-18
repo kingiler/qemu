@@ -337,7 +337,7 @@ static inline QEMU_ALWAYS_INLINE target_ulong cap_check_common_reg(
     // checks and Store permissions fault > load alignment fault
 
     bool is_load = (required_perms & CAP_PERM_LOAD) != 0;
-    bool in_bounds = cap_is_in_bounds(cbp, addr, size);
+    bool in_bounds = cap_is_in_bounds(cbp, addr, size) || cap_get_notrap(cbp);
 
     if (!cbp->cr_tag) {
         raise_cheri_exception_addr_wnr(env, CapEx_TagViolation, cb, addr,

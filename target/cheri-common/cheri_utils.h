@@ -319,6 +319,11 @@ static inline bool cap_otype_is_reserved(target_ulong otype)
     return otype >= min && otype <= CAP_CC(MAX_RESERVED_OTYPE);
 }
 
+static inline bool cap_get_notrap(const cap_register_t *c){
+    bool notrap = CAP_cc(get_notrap)(c);
+    return notrap;
+}
+
 static inline target_ulong cap_get_otype_unsigned(const cap_register_t *c)
 {
     target_ulong otype = CAP_cc(get_otype)(c);
