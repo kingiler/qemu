@@ -358,7 +358,13 @@ void CHERI_HELPER_IMPL(csetnotrap(CPUArchState *env, uint32_t cd, uint32_t cb))
     /*
      * CSetNoTrap: Set capability notrap bit
      */
+    if (!cbp->cr_tag) {
+        raise_cheri_exception(env, CapEx_TagViolation, cb);
+    } else if (!cap_is_unsealed(cbp)) {
+        raise_cheri_exception(env, CapEx_SealViolation, cb);
+    } 
     cap_register_t result = *cbp;
+    CAP_cc(update_notrap)(&result, true);
     printf("csetnotrap \n");
     update_capreg(env, cd, &result);
 }

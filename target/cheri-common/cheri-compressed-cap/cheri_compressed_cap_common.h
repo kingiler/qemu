@@ -280,6 +280,7 @@ struct _cc_N(bounds_bits) {
     static inline void _cc_N(update_##FN)(_cc_cap_t * cap, _cc_addr_t value) {                                         \
         cap->cr_pesbt = _cc_N(cap_pesbt_deposit_##FN)(cap->cr_pesbt, value);                                           \
     }
+ALL_WRAPPERS(NOTRAP, notrap, bool)
 ALL_WRAPPERS(OTYPE, otype, uint32_t)
 ALL_WRAPPERS(FLAGS, flags, uint8_t)
 #undef ALL_WRAPPERS

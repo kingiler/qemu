@@ -96,7 +96,8 @@ enum {
     _CC_FIELD(HWPERMS, 127, 110), // TODO: remove this, currently still used by QEMU
     // Morello HW perms actually 127..116, and 111...100 with SW perms in the middle.
     _CC_FIELD(UPERMS, 115, 112),
-    _CC_FIELD(OTYPE, 109, 95),
+    _CC_FIELD(NOTRAP, 109, 109),
+    _CC_FIELD(OTYPE, 108, 95),
     _CC_FIELD(EBT, 94, 64),
 // This is a bit dodgy. This enum only really works for non-address bits.
 // Just provide nonsense values that will make the length of the range 0.
@@ -123,6 +124,7 @@ enum {
 #pragma GCC diagnostic pop
 
 #define CC128M_OTYPE_BITS CC128M_FIELD_OTYPE_SIZE
+#define CC128M_NOTRAP_BITS CC128M_FIELD_NOTRAP_SIZE
 #define CC128M_BOT_WIDTH CC128M_FIELD_EXP_ZERO_BOTTOM_SIZE
 #define CC128M_BOT_INTERNAL_EXP_WIDTH CC128M_FIELD_EXP_NONZERO_BOTTOM_SIZE
 #define CC128M_EXP_LOW_WIDTH CC128M_FIELD_EXPONENT_LOW_PART_SIZE
